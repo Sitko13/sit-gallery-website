@@ -13,13 +13,13 @@
 </template>
 
 <script setup>
-// 1. Naimportujeme obrázok do premennej 'heroImage'
+// Importujeme váš lokálny obrázok do premennej 'heroImage'
 import heroImage from '@/assets/gallery_images/photo-16.jpeg';
 </script>
 
 <style scoped>
-/* 2. Z CSS pravidla sme odstránili 'background-image', pretože ho nastavujeme v šablóne */
+/* Pridáme CSS vlastnosť, ktorá zapne parallax efekt */
 .hero-section {
-  /* Všetky ostatné štýly zostávajú */
+  background-attachment: fixed;
 }
 </style>
