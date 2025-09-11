@@ -17,32 +17,34 @@
       </swiper-slide>
     </swiper>
 
-    <vue-easy-lightbox
-      :visible="lightboxVisible"
-      :imgs="imageUrls"
-      :index="lightboxIndex"
-      @hide="hideLightbox"
-    ></vue-easy-lightbox>
+    <Teleport to="body">
+      <vue-easy-lightbox
+        :visible="lightboxVisible"
+        :imgs="imageUrls"
+        :index="lightboxIndex"
+        @hide="hideLightbox"
+        :no-zoom-on-scroll="true"
+        :toolbar="['prev', 'next', 'close']"
+      ></vue-easy-lightbox>
+    </Teleport>
+    
   </div>
 </template>
 
 <script setup>
+// ... vaša <script setup> časť zostáva úplne rovnaká ...
 import { ref, computed } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Navigation, Mousewheel } from 'swiper/modules';
-
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
 import VueEasyLightbox from 'vue-easy-lightbox/dist/vue-easy-lightbox.esm.min.js';
-
 const swiperBreakpoints = {
   0: { slidesPerView: 1.5, spaceBetween: 10 },
   768: { slidesPerView: 3, spaceBetween: -40 },
   1280: { slidesPerView: 5, spaceBetween: -60 }
 }
-
 const initialImages = Object.entries(import.meta.glob('@/assets/gallery_images/*.{jpg,jpeg,png,svg}', { eager: true }))
   .map(([path, module], index) => {
     const fileName = path.split('/').pop().replace(/\.\w+$/, '');
@@ -53,9 +55,7 @@ const initialImages = Object.entries(import.meta.glob('@/assets/gallery_images/*
       title: fileName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
     };
   });
-
 const images = ref(initialImages);
-
 const lightboxVisible = ref(false);
 const lightboxIndex = ref(0);
 const imageUrls = computed(() => images.value.map(image => image.url));
@@ -71,41 +71,13 @@ const hideLightbox = () => {
 </script>
 
 <style scoped>
-.gallery-container {
-  padding: 3rem 0;
-  overflow: hidden;
-}
-.swiper {
-  padding: 20px !important;
-}
-.swiper-slide {
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  transform: scale(0.8);
-  opacity: 0.5;
-  z-index: 1; /* Pridané: Východisková vrstva pre všetky slidy */
-}
-.swiper-slide.swiper-slide-active {
-  transform: scale(1);
-  opacity: 1;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  border-radius: 8px;
-  z-index: 10; /* Pridané: Aktívny slide je vždy navrchu! */
-}
-.slide-content {
-  cursor: pointer;
-  width: 100%;
-}
-.gallery-image {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-:deep(.swiper-button-next),
-:deep(.swiper-button-prev) {
-  color: #2E2E2A;
-}
-:deep(.swiper-pagination-bullet-active) {
-  background-color: #2E2E2A;
-}
+/* ... vaša <style scoped> časť zostáva úplne rovnaká ... */
+.gallery-container { padding: 3rem 0; overflow: hidden; }
+.swiper { padding: 20px !important; transform-style: preserve-3d; }
+.swiper-slide { transition: transform 0.4s ease, opacity 0.4s ease; transform: scale(0.8); opacity: 0.5; z-index: 1; }
+.swiper-slide.swiper-slide-active { transform: scale(1); opacity: 1; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); border-radius: 8px; z-index: 10; }
+.slide-content { cursor: pointer; width: 100%; }
+.gallery-image { width: 100%; height: 400px; object-fit: cover; border-radius: 8px; }
+:deep(.swiper-button-next), :deep(.swiper-button-prev) { color: #2E2E2A; }
+:deep(.swiper-pagination-bullet-active) { background-color: #2E2E2A; }
 </style>

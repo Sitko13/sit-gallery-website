@@ -1,5 +1,4 @@
 /* src/assets/main.css */
-
 html {
   scroll-behavior: smooth;
 }
@@ -15,4 +14,36 @@ html {
     radial-gradient(circle at 85% 40%, #FADADD 0%, transparent 40%),
     radial-gradient(circle at 50% 95%, #FFDAB9 0%, transparent 50%),
     radial-gradient(circle at 30% 90%, #C3E6CB 0%, transparent 50%);
+}
+
+.nav-link {
+  @apply text-brand-dark hover:opacity-75 transition-all duration-300 relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2E2E2A;
+  transition: width 0.3s ease;
+}
+.nav-link.active-link::after {
+  width: 100%;
+}
+.mobile-nav-link {
+  @apply text-brand-dark text-3xl font-bold;
+}
+.mobile-nav-link.active-link {
+  color: #AEC6CF;
+}
+
+/* Zvýšenie z-indexu pre lightbox, aby bol nad všetkým */
+.vel-modal {
+  z-index: 200 !important;
+}
+.vel-toolbar {
+  display: none !important;
 }
