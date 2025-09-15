@@ -1,7 +1,5 @@
-// Používame 'require' namiesto 'import'
 const defaultTheme = require('tailwindcss/defaultTheme')
 
-// Používame 'module.exports' namiesto 'export default'
 module.exports = {
   content: [
     "./index.html",
@@ -9,7 +7,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // Táto časť bola správna
       colors: {
         'brand-dark': '#2E2E2E',
         'brand-light': '#F8F9FA',

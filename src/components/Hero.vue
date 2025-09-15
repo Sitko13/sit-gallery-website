@@ -18,6 +18,10 @@ import heroImage from '@/assets/gallery_images/photo-16.jpeg';
 
 <style scoped>
 .hero-section {
-  background-attachment: fixed;
+}
+@media (min-width: 768px) {
+  .hero-section {
+    background-attachment: fixed;
+  }
 }
 </style>
