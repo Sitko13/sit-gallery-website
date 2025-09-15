@@ -1,3 +1,7 @@
+<script setup>
+const currentYear = new Date().getFullYear();
+</script>
+
 <template>
   <footer class="brand-gradient-bg py-8">
     <div class="container mx-auto text-center px-4 text-brand-dark">
@@ -9,20 +13,17 @@
           </svg>
         </a>
         <a href="#" aria-label="Facebook" class="hover:opacity-75 transition-opacity">
-          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-            <path d="M22.675 0h-21.35C.59 0 0 .59 0 1.325v21.35C0 23.41.59 24 1.325 24H12.82v-9.29H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h5.693c.735 0 1.325-.59 1.325-1.325V1.325C24 .59 23.41 0 22.675 0z"></path>
+          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
           </svg>
         </a>
       </div>
 
       <p class="text-sm">
-        &copy; {{ currentYear }} SIT Gallery. Všetky práva vyhradené.
+        &copy; {{ currentYear }} SIT Gallery. All rights reserved.
       </p>
 
     </div>
   </footer>
 </template>
 
-<script setup>
-const currentYear = new Date().getFullYear();
-</script>

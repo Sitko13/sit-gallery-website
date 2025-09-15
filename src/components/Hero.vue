@@ -1,3 +1,7 @@
+<script setup>
+import heroImage from '@/assets/gallery_images/photo-16.jpeg';
+</script>
+
 <template>
   <section 
     class="hero-section relative flex items-center justify-center h-screen bg-cover bg-center bg-no-repeat"
@@ -12,13 +16,7 @@
   </section>
 </template>
 
-<script setup>
-// Importujeme váš lokálny obrázok do premennej 'heroImage'
-import heroImage from '@/assets/gallery_images/photo-16.jpeg';
-</script>
-
 <style scoped>
-/* Pridáme CSS vlastnosť, ktorá zapne parallax efekt */
 .hero-section {
   background-attachment: fixed;
 }

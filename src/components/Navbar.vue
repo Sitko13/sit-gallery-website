@@ -1,3 +1,11 @@
+<script setup>
+import { ref } from 'vue';
+const isMobileMenuOpen = ref(false);
+const closeMenu = () => {
+  isMobileMenuOpen.value = false;
+};
+</script>
+
 <template>
   <nav class="brand-gradient-bg shadow-md w-full py-4 px-8 fixed top-0 z-30">
     <div class="container mx-auto flex justify-between items-center">
@@ -31,20 +39,7 @@
   </transition>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-
-// Premenná ("prepínač"), ktorá sleduje stav mobilného menu
-const isMobileMenuOpen = ref(false);
-
-// Funkcia na zatvorenie menu (napr. po kliknutí na link)
-const closeMenu = () => {
-  isMobileMenuOpen.value = false;
-};
-</script>
-
 <style scoped>
-/* Jednoduchá animácia pre plynulé zobrazenie menu */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;

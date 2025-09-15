@@ -1,38 +1,4 @@
-<template>
-  <div class="gallery-container">
-    <swiper
-      :breakpoints="swiperBreakpoints"
-      :centered-slides="true"
-      :loop="true"
-      :pagination="{ clickable: true }"
-      :navigation="true"
-      :modules="[Pagination, Navigation, Mousewheel]"
-      :mousewheel="{ forceToAxis: true, releaseOnEdges: true }"
-      class="mySwiper"
-    >
-      <swiper-slide v-for="(image, index) in images" :key="image.id">
-        <div class="slide-content" @click="showLightbox(index)">
-          <img :src="image.url" :alt="image.alt" class="gallery-image">
-        </div>
-      </swiper-slide>
-    </swiper>
-
-    <Teleport to="body">
-      <vue-easy-lightbox
-        :visible="lightboxVisible"
-        :imgs="imageUrls"
-        :index="lightboxIndex"
-        @hide="hideLightbox"
-        :no-zoom-on-scroll="true"
-        :toolbar="['prev', 'next', 'close']"
-      ></vue-easy-lightbox>
-    </Teleport>
-    
-  </div>
-</template>
-
 <script setup>
-// ... vaša <script setup> časť zostáva úplne rovnaká ...
 import { ref, computed } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Navigation, Mousewheel } from 'swiper/modules';
@@ -70,8 +36,40 @@ const hideLightbox = () => {
 };
 </script>
 
+<template>
+  <div class="gallery-container">
+    <swiper
+      :breakpoints="swiperBreakpoints"
+      :centered-slides="true"
+      :loop="true"
+      :pagination="{ clickable: true }"
+      :navigation="true"
+      :modules="[Pagination, Navigation, Mousewheel]"
+      :mousewheel="{ forceToAxis: true, releaseOnEdges: true }"
+      class="mySwiper"
+    >
+      <swiper-slide v-for="(image, index) in images" :key="image.id">
+        <div class="slide-content" @click="showLightbox(index)">
+          <img :src="image.url" :alt="image.alt" class="gallery-image">
+        </div>
+      </swiper-slide>
+    </swiper>
+
+    <Teleport to="body">
+      <vue-easy-lightbox
+        :visible="lightboxVisible"
+        :imgs="imageUrls"
+        :index="lightboxIndex"
+        @hide="hideLightbox"
+        :no-zoom-on-scroll="true"
+        :toolbar="['prev', 'next', 'close']"
+      ></vue-easy-lightbox>
+    </Teleport>
+    
+  </div>
+</template>
+
 <style scoped>
-/* ... vaša <style scoped> časť zostáva úplne rovnaká ... */
 .gallery-container { padding: 3rem 0; overflow: hidden; }
 .swiper { padding: 20px !important; transform-style: preserve-3d; }
 .swiper-slide { transition: transform 0.4s ease, opacity 0.4s ease; transform: scale(0.8); opacity: 0.5; z-index: 1; }
